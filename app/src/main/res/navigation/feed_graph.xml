@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feed_graph"
+    app:startDestination="@id/feedFragment2">
+
+    <fragment
+        android:id="@+id/feedFragment2"
+        android:name="com.berkeerkec.hellodiary.FeedFragment"
+        android:label="fragment_feed"
+        tools:layout="@layout/fragment_feed" >
+        <action
+            android:id="@+id/action_feedFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment2" />
+        <action
+            android:id="@+id/action_feedFragment2_to_nav_graph"
+            app:destination="@id/nav_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment2"
+        android:name="com.berkeerkec.hellodiary.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
+    <include app:graph="@navigation/nav_graph" />
+</navigation>

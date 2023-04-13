@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FeedFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraitLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:text="Hi"
+                android:textColor="#1D252E"
+                android:textStyle="bold"
+                android:textSize="26sp" />
+
+            <TextView
+                android:id="@+id/feedNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:text="Berke"
+                android:textColor="#1D252E"
+                android:textStyle="bold"
+                android:textSize="26sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E7E7E7"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></View>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewDiary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:backgroundTint="#9CD4BF"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/plus_image"
+        app:layout_anchor="@id/recyclerViewDiary"
+        app:layout_anchorGravity="bottom|right|end"
+        android:layout_margin="16dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/exitFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:backgroundTint="#9CD4BF"
+        app:fabSize="normal"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/exit_image"
+        app:layout_anchor="@id/recyclerViewDiary"
+        app:layout_anchorGravity="bottom|right|end"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="16dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/editFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:backgroundTint="#9CD4BF"
+        app:fabSize="normal"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/pen_image"
+        app:layout_anchor="@id/recyclerViewDiary"
+        app:layout_anchorGravity="bottom|right|end"
+        android:layout_marginBottom="145dp"
+        android:layout_marginEnd="16dp"/>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

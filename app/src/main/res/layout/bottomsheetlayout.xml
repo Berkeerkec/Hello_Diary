@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg">
+
+
+    <TextView
+        android:id="@+id/chooseText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Choose"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#1D252E"
+        android:layout_marginTop="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/smileView"
+            android:layout_margin="15dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/smile_image"></ImageView>
+
+        <ImageView
+            android:id="@+id/inloveView"
+            android:layout_margin="15dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/inlove_image"></ImageView>
+        <ImageView
+            android:id="@+id/laughingView"
+            android:layout_margin="15dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/laughing_image"></ImageView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/angryView"
+            android:layout_margin="15dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/angry_image"></ImageView>
+
+        <ImageView
+            android:id="@+id/deadView"
+            android:layout_margin="15dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/dead_image"></ImageView>
+        <ImageView
+            android:id="@+id/cryView"
+            android:layout_margin="15dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/sad2_image"></ImageView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/nerdView"
+            android:layout_margin="15dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/nerd_image"></ImageView>
+
+        <ImageView
+            android:id="@+id/confusedView"
+            android:layout_margin="15dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/confused_image"></ImageView>
+        <ImageView
+            android:id="@+id/sadView"
+            android:layout_margin="15dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/sad_image"></ImageView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

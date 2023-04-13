@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1031641976293",
+    "project_id": "hello-diary-efdb5",
+    "storage_bucket": "hello-diary-efdb5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031641976293:android:971377c2869acbcce4f30c",
+        "android_client_info": {
+          "package_name": "com.berkeerkec.hellodiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031641976293-a6crl9rtsjrnfu31mej8dlfkcvem0eag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiUxPAECSvaOEJKY7fkl3rRt9teOl7yQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031641976293-a6crl9rtsjrnfu31mej8dlfkcvem0eag.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
