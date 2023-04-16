@@ -11,4 +11,5 @@ interface DiaryRepositoryInterface{
     suspend fun deleteDiary(diary: Diary)
 
     fun getData() : LiveData<List<Diary>>
+
 }

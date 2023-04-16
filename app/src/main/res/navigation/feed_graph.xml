@@ -21,6 +21,18 @@
         android:id="@+id/detailsFragment2"
         android:name="com.berkeerkec.hellodiary.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="info"
+            app:argType="string"
+            android:defaultValue="new" />
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_detailsFragment2_to_feedFragment2"
+            app:destination="@id/feedFragment2" />
+    </fragment>
     <include app:graph="@navigation/nav_graph" />
 </navigation>

@@ -14,4 +14,5 @@ interface DiaryDao {
 
     @Query("SELECT * FROM diary")
     fun observeDiary() : LiveData<List<Diary>>
+
 }

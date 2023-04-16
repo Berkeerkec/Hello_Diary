@@ -3,6 +3,7 @@ package com.berkeerkec.hellodiary
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -19,6 +20,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.berkeerkec.hellodiary.databinding.FragmentDetailsBinding
+import com.berkeerkec.hellodiary.roomdb.Diary
 import com.berkeerkec.hellodiary.util.Status
 import com.berkeerkec.hellodiary.viewmodel.DiaryViewModel
 import java.io.ByteArrayOutputStream
@@ -51,6 +53,41 @@ class DetailsFragment : Fragment() {
         val binding = FragmentDetailsBinding.bind(view)
         fragmentBinding = binding
 
+        arguments?.let {
+            val info = DetailsFragmentArgs.fromBundle(it).info
+
+            if (info.equals("new")){
+                binding.detailsTitleView.setText("")
+                binding.detailsTextView.setText("")
+                binding.imageAdd.setImageResource(R.drawable.emoji_add)
+                binding.dateView.text = ""
+                binding.saveButton.visibility = View.VISIBLE
+                binding.deleteButton.visibility = View.GONE
+
+            }else{
+                binding.saveButton.visibility = View.GONE
+                binding.deleteButton.visibility = View.VISIBLE
+
+                val selectedId = DetailsFragmentArgs.fromBundle(it).id
+
+
+                viewModel.diaryList.observe(viewLifecycleOwner, Observer {
+                    it.map {
+                      if (it.id == selectedId){
+                          binding.detailsTitleView.setText(it.title)
+                          binding.detailsTextView.setText(it.text)
+                          binding.dateView.text = it.date
+                          val bitmap = BitmapFactory.decodeByteArray(it.image,0,it.image.size)
+                          binding.imageAdd.setImageBitmap(bitmap)
+
+                      }
+                    }
+                })
+
+
+            }
+        }
+
         subscribeToObserver()
 
         binding.imageAdd.setOnClickListener {
@@ -81,6 +118,7 @@ class DetailsFragment : Fragment() {
                     binding.detailsTextView.text.toString(),
                     byte,
                     date)
+
             }
         }
 

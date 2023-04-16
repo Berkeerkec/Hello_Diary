@@ -1,12 +1,18 @@
 package com.berkeerkec.hellodiary.adapter
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.berkeerkec.hellodiary.DetailsFragment
+import com.berkeerkec.hellodiary.DetailsFragmentArgs
+import com.berkeerkec.hellodiary.FeedFragmentDirections
 import com.berkeerkec.hellodiary.databinding.FeedAddRowBinding
 import com.berkeerkec.hellodiary.roomdb.Diary
 import javax.inject.Inject
@@ -52,7 +58,12 @@ class DiaryRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<DiaryRec
             val byteArray = diary.image
             val bitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.size)
             holder.binding.feedEmojiView.setImageBitmap(bitmap)
-
         }
+        holder.itemView.setOnClickListener {
+
+            val action = FeedFragmentDirections.actionFeedFragmentToDetailsFragment("old",diary.id!!)
+            Navigation.findNavController(it).navigate(action)
+        }
+
     }
 }

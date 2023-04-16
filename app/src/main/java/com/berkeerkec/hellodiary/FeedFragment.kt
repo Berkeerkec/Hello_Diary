@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.berkeerkec.hellodiary.adapter.DiaryRecyclerAdapter
@@ -87,7 +89,8 @@ class FeedFragment @Inject constructor(
         }
 
         binding.editFab.setOnClickListener {
-            findNavController().navigate(FeedFragmentDirections.actionFeedFragmentToDetailsFragment())
+            findNavController().navigate(FeedFragmentDirections.actionFeedFragmentToDetailsFragment("new",0))
+
         }
 
     }

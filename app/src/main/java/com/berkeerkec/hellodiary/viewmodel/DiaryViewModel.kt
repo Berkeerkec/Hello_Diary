@@ -1,7 +1,11 @@
 package com.berkeerkec.hellodiary.viewmodel
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.berkeerkec.hellodiary.repo.DiaryRepositoryInterface
@@ -16,11 +20,14 @@ class DiaryViewModel @Inject constructor(
     private val repository : DiaryRepositoryInterface
 ) :ViewModel(){
 
+
+
     val diaryList = repository.getData()
 
     private var insertDiaryMsg = MutableLiveData<Resource<Diary>>()
     val insertDiaryMessage : LiveData<Resource<Diary>>
     get() = insertDiaryMsg
+
 
     fun resertInsertDiaryMsg(){
         insertDiaryMsg = MutableLiveData<Resource<Diary>>()
@@ -34,6 +41,7 @@ class DiaryViewModel @Inject constructor(
         repository.deleteDiary(diary)
     }
 
+
     fun makeDiary(title : String, text : String, image : ByteArray, date : String){
         if (title.isEmpty() || text.isEmpty() || image.isEmpty() || date.isEmpty()){
             insertDiaryMsg.postValue(Resource.error("Enter title, text, date and emoji", null))
@@ -43,6 +51,7 @@ class DiaryViewModel @Inject constructor(
         val diary = Diary(title,text,image,date)
         insertDiary(diary)
         insertDiaryMsg.postValue(Resource.success(diary))
+
 
     }
 

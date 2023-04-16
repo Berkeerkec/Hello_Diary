@@ -24,4 +24,6 @@ class DiaryRepository @Inject constructor(
     override fun getData(): LiveData<List<Diary>> {
         return diaryDao.observeDiary()
     }
+
+
 }
