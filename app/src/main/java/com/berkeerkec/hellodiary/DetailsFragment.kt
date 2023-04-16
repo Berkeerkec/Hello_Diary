@@ -80,6 +80,14 @@ class DetailsFragment : Fragment() {
                           val bitmap = BitmapFactory.decodeByteArray(it.image,0,it.image.size)
                           binding.imageAdd.setImageBitmap(bitmap)
 
+                          binding.deleteButton.setOnClickListener { view ->
+                              if (it.id == selectedId){
+                                  val choosenDiary = it
+                                  viewModel.deleteDiary(choosenDiary)
+                                  findNavController().navigate(DetailsFragmentDirections.actionDetailsFragment2ToFeedFragment2())
+                              }
+                          }
+
                       }
                     }
                 })
