@@ -12,7 +12,7 @@ interface DiaryDao {
     @Delete
     suspend fun deleteDiary(diary : Diary)
 
-    @Query("SELECT * FROM diary")
+    @Query("SELECT * FROM diary ORDER BY id DESC")
     fun observeDiary() : LiveData<List<Diary>>
 
 }
