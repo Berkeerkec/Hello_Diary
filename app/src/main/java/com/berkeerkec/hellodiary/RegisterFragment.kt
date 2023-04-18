@@ -63,9 +63,8 @@ class RegisterFragment : Fragment() {
             Toast.makeText(requireContext(),"Enter name, email and password!", Toast.LENGTH_LONG).show()
         }else{
             auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener {
-                val uuid = UUID.randomUUID()
 
-                firestore.collection("User").document(uuid.toString()).set(userMap).addOnSuccessListener {
+                firestore.collection("User").document(auth.uid.toString()).set(userMap).addOnSuccessListener {
 
                     findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToFeedPageActivity())
                 }.addOnFailureListener {

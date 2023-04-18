@@ -21,6 +21,8 @@ import com.berkeerkec.hellodiary.viewmodel.DiaryViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import javax.inject.Inject
 
@@ -53,7 +55,16 @@ class FeedFragment @Inject constructor(
         super.onCreate(savedInstanceState)
 
         auth = Firebase.auth
+        firestore = Firebase.firestore
 
+        firestore.collection("User").document(auth.uid.toString()).addSnapshotListener { value, error ->
+
+            if (value != null){
+                val name = value.get("name")
+                fragmentBinding!!.feedNameText.text = name.toString()
+
+            }
+        }
     }
 
     override fun onCreateView(
