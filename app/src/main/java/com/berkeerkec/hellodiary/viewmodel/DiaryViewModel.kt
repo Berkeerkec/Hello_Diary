@@ -9,15 +9,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.berkeerkec.hellodiary.repo.DiaryRepositoryInterface
+import com.berkeerkec.hellodiary.repo.FirestoreRepositoryInterface
 import com.berkeerkec.hellodiary.roomdb.Diary
 import com.berkeerkec.hellodiary.util.Resource
+import com.google.firebase.firestore.DocumentSnapshot
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class DiaryViewModel @Inject constructor(
-    private val repository : DiaryRepositoryInterface
+    private val repository : DiaryRepositoryInterface,
+    private val firebaseRepo : FirestoreRepositoryInterface
 ) :ViewModel(){
 
 
@@ -53,6 +56,21 @@ class DiaryViewModel @Inject constructor(
         insertDiaryMsg.postValue(Resource.success(diary))
 
 
+    }
+
+    val myDocuments = MutableLiveData<List<DocumentSnapshot>>()
+    val myDocument : LiveData<List<DocumentSnapshot>>
+        get() = myDocuments
+
+    fun addMyDocuments(data : Map<String,Any>){
+        firebaseRepo.addDocument("Diary", data)
+    }
+
+    fun getMyDocument(){
+        firebaseRepo.getDocumennt("Diary").addOnSuccessListener {
+            val document = it.documents
+            myDocuments.value = document
+        }
     }
 
 

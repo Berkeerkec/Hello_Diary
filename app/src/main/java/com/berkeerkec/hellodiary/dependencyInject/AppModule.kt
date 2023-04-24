@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.berkeerkec.hellodiary.repo.DiaryRepository
 import com.berkeerkec.hellodiary.repo.DiaryRepositoryInterface
+import com.berkeerkec.hellodiary.repo.FirestoreRepository
+import com.berkeerkec.hellodiary.repo.FirestoreRepositoryInterface
 import com.berkeerkec.hellodiary.roomdb.DiaryDao
 import com.berkeerkec.hellodiary.roomdb.DiaryDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -32,5 +34,12 @@ object AppModule {
     @Provides
     fun provideDiaryRepository(dao : DiaryDao) = DiaryRepository(dao) as DiaryRepositoryInterface
 
+    @Singleton
+    @Provides
+    fun injectFirestore() = FirebaseFirestore.getInstance()
+
+    @Singleton
+    @Provides
+    fun provideFirestoreRepository(firestore : FirebaseFirestore) = FirestoreRepository(firestore) as FirestoreRepositoryInterface
 
 }

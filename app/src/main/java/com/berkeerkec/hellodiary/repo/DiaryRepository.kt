@@ -3,6 +3,9 @@ package com.berkeerkec.hellodiary.repo
 import androidx.lifecycle.LiveData
 import com.berkeerkec.hellodiary.roomdb.Diary
 import com.berkeerkec.hellodiary.roomdb.DiaryDao
+import com.berkeerkec.hellodiary.util.Resource
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
@@ -24,6 +27,7 @@ class DiaryRepository @Inject constructor(
     override fun getData(): LiveData<List<Diary>> {
         return diaryDao.observeDiary()
     }
+
 
 
 }

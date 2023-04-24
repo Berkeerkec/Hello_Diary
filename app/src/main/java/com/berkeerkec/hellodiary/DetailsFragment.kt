@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -22,18 +23,35 @@ import androidx.navigation.fragment.findNavController
 import com.berkeerkec.hellodiary.databinding.FragmentDetailsBinding
 import com.berkeerkec.hellodiary.roomdb.Diary
 import com.berkeerkec.hellodiary.util.Status
+import com.berkeerkec.hellodiary.viewmodel.DiaryFirestoreViewModel
 import com.berkeerkec.hellodiary.viewmodel.DiaryViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
+import java.io.File
 import java.util.Calendar
+import java.util.UUID
 
 class DetailsFragment : Fragment() {
 
     private lateinit var fragmentBinding : FragmentDetailsBinding
     lateinit var viewModel : DiaryViewModel
-    var myDate = ""
+    private lateinit var storage : FirebaseStorage
+    private lateinit var firestore : FirebaseFirestore
+    private lateinit var auth : FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        storage = Firebase.storage
+        firestore = Firebase.firestore
+        auth = Firebase.auth
 
     }
 
@@ -91,8 +109,6 @@ class DetailsFragment : Fragment() {
                       }
                     }
                 })
-
-
             }
         }
 
@@ -127,6 +143,25 @@ class DetailsFragment : Fragment() {
                     byte,
                     date)
 
+
+                val storageRef = storage.reference
+                val fileName = "my_emoji.jpg"
+                val imageRef = storageRef.child("images/$fileName")
+                val uploadTask = imageRef.putBytes(byte).addOnSuccessListener {
+                    imageRef.downloadUrl.addOnSuccessListener {
+
+                        val imageUrl = it.toString()
+                        val map = HashMap<String,Any>()
+                        map.put("title", binding.detailsTitleView.text.toString())
+                        map.put("text", binding.detailsTextView.text.toString())
+                        map.put("emojiUrl", imageUrl)
+                        map.put("date", date)
+                        viewModel.addMyDocuments(map)
+                    }.addOnFailureListener {
+                        Toast.makeText(requireContext(),"Your data could not be loaded into the database",Toast.LENGTH_LONG).show()
+                    }
+
+                }
             }
         }
 
