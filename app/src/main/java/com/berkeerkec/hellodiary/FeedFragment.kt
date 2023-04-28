@@ -17,7 +17,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.berkeerkec.hellodiary.adapter.DiaryRecyclerAdapter
 import com.berkeerkec.hellodiary.databinding.FragmentFeedBinding
-import com.berkeerkec.hellodiary.viewmodel.DiaryFirestoreViewModel
 import com.berkeerkec.hellodiary.viewmodel.DiaryViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth

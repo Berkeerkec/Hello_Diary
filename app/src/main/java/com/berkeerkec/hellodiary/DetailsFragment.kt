@@ -23,7 +23,6 @@ import androidx.navigation.fragment.findNavController
 import com.berkeerkec.hellodiary.databinding.FragmentDetailsBinding
 import com.berkeerkec.hellodiary.roomdb.Diary
 import com.berkeerkec.hellodiary.util.Status
-import com.berkeerkec.hellodiary.viewmodel.DiaryFirestoreViewModel
 import com.berkeerkec.hellodiary.viewmodel.DiaryViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
