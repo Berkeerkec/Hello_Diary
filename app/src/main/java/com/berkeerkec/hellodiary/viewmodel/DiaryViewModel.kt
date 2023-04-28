@@ -73,6 +73,17 @@ class DiaryViewModel @Inject constructor(
         }
     }
 
+    fun deleteAllData(){
+        viewModelScope.launch {
+            try {
+                repository.deleteAllData()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+
 
 
 }

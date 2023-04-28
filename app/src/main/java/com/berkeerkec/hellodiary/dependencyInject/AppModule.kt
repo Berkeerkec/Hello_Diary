@@ -40,6 +40,6 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideFirestoreRepository(firestore : FirebaseFirestore) = FirestoreRepository(firestore) as FirestoreRepositoryInterface
+    fun provideFirestoreRepository(firestore : FirebaseFirestore, dao : DiaryDao) = FirestoreRepository(firestore, dao) as FirestoreRepositoryInterface
 
 }

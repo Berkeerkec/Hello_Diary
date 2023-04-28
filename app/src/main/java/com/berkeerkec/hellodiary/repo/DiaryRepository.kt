@@ -28,6 +28,8 @@ class DiaryRepository @Inject constructor(
         return diaryDao.observeDiary()
     }
 
-
+    override suspend fun deleteAllData() {
+        diaryDao.deleteAllData()
+    }
 
 }

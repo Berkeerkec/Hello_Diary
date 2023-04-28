@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.berkeerkec.hellodiary.adapter.DiaryRecyclerAdapter
 import com.berkeerkec.hellodiary.databinding.FragmentFeedBinding
+import com.berkeerkec.hellodiary.viewmodel.DiaryFirestoreViewModel
 import com.berkeerkec.hellodiary.viewmodel.DiaryViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -34,7 +35,6 @@ class FeedFragment @Inject constructor(
     private var clicked = false
     private lateinit var auth : FirebaseAuth
     private lateinit var firestore : FirebaseFirestore
-    private var feedName : String? = null
     lateinit var viewModel : DiaryViewModel
 
     private val rotateOpen : Animation by lazy { AnimationUtils.loadAnimation(requireContext(),
@@ -93,6 +93,7 @@ class FeedFragment @Inject constructor(
         }
 
         binding.exitFab.setOnClickListener {
+            viewModel.deleteAllData()
             auth.signOut()
             val intent = Intent(requireContext(), MainActivity::class.java)
             startActivity(intent)

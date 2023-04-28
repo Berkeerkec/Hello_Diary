@@ -15,4 +15,7 @@ interface DiaryDao {
     @Query("SELECT * FROM diary ORDER BY id DESC")
     fun observeDiary() : LiveData<List<Diary>>
 
+    @Query("DELETE FROM diary")
+    suspend fun deleteAllData()
+
 }

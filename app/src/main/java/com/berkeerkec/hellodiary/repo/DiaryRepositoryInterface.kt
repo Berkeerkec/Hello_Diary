@@ -13,6 +13,6 @@ interface DiaryRepositoryInterface{
 
     fun getData() : LiveData<List<Diary>>
 
-
+    suspend fun deleteAllData()
 
 }
